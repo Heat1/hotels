@@ -1,0 +1,14 @@
+<%= form_for(@user_rates) do |f| %>
+   <div class="field">
+     <%= f.label :urate %><br>
+     <%= f.text_field :urate %>
+   </div>
+    <div class="field">
+      <%= f.label :comment %><br>
+      <%= f.text_field :comment %>
+    </div>
+
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

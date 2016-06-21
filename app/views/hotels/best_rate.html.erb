@@ -1,0 +1,26 @@
+<% @hotels.order(:average_rate).each do |hotel| %>
+    <p>    <% hotel.average_rate = hotel.user_rates.average(:urate)%> </p>
+    <% hotel.save%>
+<% end %>
+    <h4 class="column">Top 5 hotels with the best rating <%= link_to 'See listing hotels', index_rate_hotels_path %></h4>
+  <div class="expanded row">
+    <% @hotels.order("average_rate").limit(5).reverse_order.each do |hotel| %>
+      <div class="small-2 large-2 columns end">
+        <%= hotel.title%>
+         <div class="hotel-card padly">
+          <%= link_to hotel, class: "poster" do %>
+              <%= image_tag hotel.photo_url(:thumb), width: 300, class: "img-thumbnail" %><br>
+          <% end %>
+          <div class="hotel-info ell glassy-bg padmy padlx">
+            <p>$ <%= hotel.price%><%=' '%><%='by room'%> </p>
+            <p><%= hotel.user_rates.average(:urate)%><%=' '%><%='average rate'%> </p>
+          </div>
+          <p>Last comments:</p>
+          <% hotel.user_rates.order('created_at').limit(5).reverse_order.each do |user_rate| %>
+              <p><%= user_rate.comment %>!</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+

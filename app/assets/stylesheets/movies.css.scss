@@ -1,0 +1,14 @@
+// Index page style
+.hotels-grid {
+  .hotel-card {
+    width:220px;
+    margin:auto;
+    .poster img {
+      height: 325px;
+      width:100%;
+    }
+    .hotel-info {
+      .title { height: 4em; }
+    }
+  }
+}
